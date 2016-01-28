@@ -29,12 +29,15 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.NumberPicker;
 
+import com.android.internal.telephony.MccTable;
 import com.cyanogenmod.setupwizard.R;
 import com.cyanogenmod.setupwizard.SetupWizardApp;
 import com.cyanogenmod.setupwizard.cmstats.SetupStats;
@@ -42,6 +45,7 @@ import com.cyanogenmod.setupwizard.ui.LocalePicker;
 import com.cyanogenmod.setupwizard.ui.SetupPageFragment;
 import com.cyanogenmod.setupwizard.util.SetupWizardUtils;
 
+import java.util.List;
 import java.util.Locale;
 
 public class WelcomePage extends SetupPage {
@@ -281,9 +285,56 @@ public class WelcomePage extends SetupPage {
             if (mUserPickedLocale || isDetached()) {
                 return;
             }
-            Locale simLocale = getSimLocale();
-            if (simLocale != null && !simLocale.equals(mCurrentLocale)) {
-                onLocaleChanged(simLocale);
+            if (mFetchUpdateSimLocaleTask != null) {
+                mFetchUpdateSimLocaleTask.cancel(true);
+            }
+            mFetchUpdateSimLocaleTask = new FetchUpdateSimLocaleTask();
+            mFetchUpdateSimLocaleTask.execute();
+        }
+
+        private class FetchUpdateSimLocaleTask extends AsyncTask<Void, Void, Locale> {
+            @Override
+            protected Locale doInBackground(Void... params) {
+                Locale locale = null;
+                Activity activity = getActivity();
+                if (activity != null) {
+                    final SubscriptionManager subscriptionManager =
+                            SubscriptionManager.from(activity);
+                    List<SubscriptionInfo> activeSubs =
+                            subscriptionManager.getActiveSubscriptionInfoList();
+                    if (activeSubs == null || activeSubs.isEmpty()) {
+                        return null;
+                    }
+
+                    // Fetch locale for active sim's MCC
+                    int mcc = activeSubs.get(0).getMcc();
+                    locale = MccTable.getLocaleFromMcc(activity, mcc, null);
+
+                    // If that fails, fall back to preferred languages reported
+                    // by the sim
+                    if (locale == null) {
+                        TelephonyManager telephonyManager = (TelephonyManager) activity.
+                                getSystemService(Context.TELEPHONY_SERVICE);
+                        String localeString = telephonyManager.getLocaleFromDefaultSim();
+                        if (localeString != null) {
+                            locale = Locale.forLanguageTag(localeString);
+
+                        }
+                    }
+                }
+                return locale;
+            }
+
+            @Override
+            protected void onPostExecute(Locale simLocale) {
+                if (simLocale != null && !simLocale.equals(mCurrentLocale)) {
+                    if (!mIgnoreSimLocale && !isDetached()) {
+                        String label = getString(R.string.sim_locale_changed,
+                                simLocale.getDisplayName());
+                        Toast.makeText(getActivity(), label, Toast.LENGTH_SHORT).show();
+                        onLocaleChanged(simLocale);
+                    }
+                }
             }
         }
     }
