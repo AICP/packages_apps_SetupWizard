@@ -93,10 +93,8 @@ public class SimMissingActivity extends SubBaseActivity {
         if (mPhoneMonitor.simMissing()) {
             SetupWizardUtils.disableComponent(this, ChooseDataSimActivity.class);
             SetupWizardUtils.disableComponent(this, MobileDataActivity.class);
-            nextAction(ResultCodes.RESULT_SKIP);
-        } else {
-            super.onNavigateNext();
         }
+        super.onNavigateNext();
     }
 
     @Override
