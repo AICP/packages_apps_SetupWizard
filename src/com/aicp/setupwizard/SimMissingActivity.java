@@ -29,12 +29,13 @@ import android.widget.ImageView;
 import com.google.android.setupcompat.util.ResultCodes;
 
 import com.aicp.setupwizard.util.PhoneMonitor;
+import com.aicp.setupwizard.util.SetupWizardUtils;
 
 import static android.service.euicc.EuiccService.ACTION_PROVISION_EMBEDDED_SUBSCRIPTION;
 import static android.telephony.euicc.EuiccManager.EXTRA_FORCE_PROVISION;
 import static com.google.android.setupcompat.util.WizardManagerHelper.EXTRA_IS_FIRST_RUN;
 import static com.google.android.setupcompat.util.WizardManagerHelper.EXTRA_IS_SETUP_FLOW;
-import static org.lineageos.setupwizard.SetupWizardApp.REQUEST_CODE_SETUP_EUICC;
+import static com.aicp.setupwizard.SetupWizardApp.REQUEST_CODE_SETUP_EUICC;
 
 public class SimMissingActivity extends SubBaseActivity {
 
@@ -81,9 +82,17 @@ public class SimMissingActivity extends SubBaseActivity {
         }
     }
 
+    protected void onResume() {
+        super.onResume();
+        SetupWizardUtils.enableComponent(this, ChooseDataSimActivity.class);
+        SetupWizardUtils.enableComponent(this, MobileDataActivity.class);
+    }
+
     @Override
     public void onNavigateNext() {
         if (mPhoneMonitor.simMissing()) {
+            SetupWizardUtils.disableComponent(this, ChooseDataSimActivity.class);
+            SetupWizardUtils.disableComponent(this, MobileDataActivity.class);
             nextAction(ResultCodes.RESULT_SKIP);
         } else {
             super.onNavigateNext();

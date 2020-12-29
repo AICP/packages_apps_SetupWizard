@@ -36,8 +36,7 @@
     </WizardAction>
 
     <WizardAction wizard:uri="intent:#Intent;action=com.aicp.setupwizard.AICP_WIFI_SETUP;end" id="wifi_setup">
-        <result wizard:resultCode="1" wizard:action="sim_missing" wizard:name="no_sim" />
-        <result wizard:action="choose_data_sim" />
+        <result wizard:action="sim_missing" />
     </WizardAction>
 
     <WizardAction wizard:uri="intent:#Intent;action=com.aicp.setupwizard.AICP_SIM_MISSING;end" id="sim_missing">
@@ -62,6 +61,10 @@
     </WizardAction>
 
     <WizardAction wizard:uri="intent:#Intent;action=com.aicp.setupwizard.AICP_RECOVERY_UPDATE;end" id="recovery_update">
+        <result wizard:action="aicp_settings" />
+    </WizardAction>
+
+    <WizardAction wizard:uri="intent:#Intent;action=com.aicp.setupwizard.AICP_SETTINGS;end" id="aicp_settings">
         <result wizard:action="biometric_settings" />
     </WizardAction>
 
