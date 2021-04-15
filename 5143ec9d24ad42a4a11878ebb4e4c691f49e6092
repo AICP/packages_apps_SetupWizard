@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "149d1188_163e5b0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2021-04-15T17:10:00Z",
+      "side": 1,
+      "message": "Authorship must go to Vasilj Milošević \u003ceboyee@gmail.com\u003e",
+      "revId": "5143ec9d24ad42a4a11878ebb4e4c691f49e6092",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b"
+    }
+  ]
+}
