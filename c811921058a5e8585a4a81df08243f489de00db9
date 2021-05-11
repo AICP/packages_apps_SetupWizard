@@ -16,6 +16,29 @@
       "message": "All good. You can merge ahahahahha",
       "revId": "c811921058a5e8585a4a81df08243f489de00db9",
       "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cfe8aad_7cbac450",
+        "filename": "res/raw/wizard_script.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1416
+      },
+      "writtenOn": "2021-05-11T18:25:18Z",
+      "side": 1,
+      "message": "\u003cresult wizard:action\u003d\"finish\" /\u003e   ?",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 49
+      },
+      "revId": "c811921058a5e8585a4a81df08243f489de00db9",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b"
     }
   ]
 }
