@@ -43,8 +43,7 @@ public class WelcomeActivity extends BaseSetupWizardActivity {
         super.onCreate(savedInstanceState);
         mRootView = findViewById(R.id.setup_wizard_layout);
         setNextText(R.string.next);
-        setBackText(R.string.emergency_call);
-        setBackDrawable(null);
+        setSkipText(R.string.emergency_call);
         mEnableAccessibilityController =
                 EnableAccessibilityController.getInstance(getApplicationContext());
         mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
@@ -89,7 +88,11 @@ public class WelcomeActivity extends BaseSetupWizardActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {}
+
+    @Override
+    public void onSkip() {
+        startEmergencyDialer();
     }
 
     @Override
