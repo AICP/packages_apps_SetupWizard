@@ -18,11 +18,15 @@
 package com.aicp.setupwizard;
 
 import static com.aicp.setupwizard.SetupWizardApp.ACTION_SETUP_WIFI;
+import static com.aicp.setupwizard.SetupWizardApp.EXTRA_ENABLE_NEXT_ON_CONNECT;
 import static com.aicp.setupwizard.SetupWizardApp.EXTRA_PREFS_SET_BACK_TEXT;
 import static com.aicp.setupwizard.SetupWizardApp.EXTRA_PREFS_SHOW_BUTTON_BAR;
+import static com.aicp.setupwizard.SetupWizardApp.EXTRA_PREFS_SHOW_SKIP;
 import static com.aicp.setupwizard.SetupWizardApp.REQUEST_CODE_SETUP_WIFI;
 
 import android.content.Intent;
+
+import com.google.android.setupcompat.util.WizardManagerHelper;
 
 import com.aicp.setupwizard.util.SetupWizardUtils;
 
@@ -37,8 +41,11 @@ public class WifiSetupActivity extends WrapperSubBaseActivity {
         if (SetupWizardUtils.hasLeanback(this)) {
             intent.setComponent(SetupWizardUtils.sTvWifiSetupSettingsActivity);
         }
+        intent.putExtra(WizardManagerHelper.EXTRA_IS_SETUP_FLOW, true);
         intent.putExtra(EXTRA_PREFS_SHOW_BUTTON_BAR, true);
+        intent.putExtra(EXTRA_PREFS_SHOW_SKIP, true);
         intent.putExtra(EXTRA_PREFS_SET_BACK_TEXT, (String) null);
+        intent.putExtra(EXTRA_ENABLE_NEXT_ON_CONNECT, true);
         startSubactivity(intent, REQUEST_CODE_SETUP_WIFI);
     }
 }
