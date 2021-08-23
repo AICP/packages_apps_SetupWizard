@@ -23,6 +23,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.google.android.setupcompat.util.SystemBarHelper;
+
 import com.aicp.setupwizard.util.EnableAccessibilityController;
 import com.aicp.setupwizard.util.SetupWizardUtils;
 
@@ -41,9 +43,13 @@ public class WelcomeActivity extends BaseSetupWizardActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SystemBarHelper.setBackButtonVisible(getWindow(), false);
         mRootView = findViewById(R.id.setup_wizard_layout);
-        setNextText(R.string.next);
+        setNextText(R.string.start);
         setSkipText(R.string.emergency_call);
+        findViewById(R.id.start).setOnClickListener(view -> onNextPressed());
+        findViewById(R.id.emerg_dialer)
+                .setOnClickListener(view -> startEmergencyDialer());
         mEnableAccessibilityController =
                 EnableAccessibilityController.getInstance(getApplicationContext());
         mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
@@ -89,16 +95,6 @@ public class WelcomeActivity extends BaseSetupWizardActivity {
 
     @Override
     public void onBackPressed() {}
-
-    @Override
-    public void onSkip() {
-        startEmergencyDialer();
-    }
-
-    @Override
-    public void onNavigateBack() {
-        startEmergencyDialer();
-    }
 
     @Override
     protected int getLayoutResId() {
