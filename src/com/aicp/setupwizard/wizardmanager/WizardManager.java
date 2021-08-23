@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ package com.aicp.setupwizard.wizardmanager;
 import static com.aicp.setupwizard.SetupWizardApp.ACTION_LOAD;
 import static com.aicp.setupwizard.SetupWizardApp.ACTION_NEXT;
 import static com.aicp.setupwizard.SetupWizardApp.EXTRA_ACTION_ID;
-import static com.aicp.setupwizard.SetupWizardApp.EXTRA_FIRST_RUN;
 import static com.aicp.setupwizard.SetupWizardApp.EXTRA_RESULT_CODE;
 import static com.aicp.setupwizard.SetupWizardApp.EXTRA_SCRIPT_URI;
 import static com.aicp.setupwizard.SetupWizardApp.LOGV;
@@ -87,7 +86,7 @@ public class WizardManager extends Activity {
     }
 
     private void addExtras(Intent intent) {
-        intent.putExtra(EXTRA_FIRST_RUN, true);
+        intent.putExtra(WizardManagerHelper.EXTRA_IS_FIRST_RUN, true);
         intent.putExtra(WizardManagerHelper.EXTRA_THEME, ThemeHelper.THEME_MATERIAL_LIGHT);
     }
 
