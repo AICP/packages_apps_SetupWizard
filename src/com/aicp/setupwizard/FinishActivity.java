@@ -17,6 +17,9 @@
 
 package com.aicp.setupwizard;
 
+import static android.os.Binder.getCallingUserHandle;
+
+import static com.aicp.setupwizard.Manifest.permission.FINISH_SETUP;
 import static com.aicp.setupwizard.SetupWizardApp.ACTION_SETUP_COMPLETE;
 import static com.aicp.setupwizard.SetupWizardApp.ENABLE_RECOVERY_UPDATE;
 import static com.aicp.setupwizard.SetupWizardApp.LOGV;
@@ -33,8 +36,8 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.UserHandle;
 import android.os.SystemProperties;
+import android.os.UserHandle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -43,9 +46,6 @@ import android.widget.ImageView;
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
 import com.aicp.setupwizard.util.EnableAccessibilityController;
-
-import static android.os.Binder.getCallingUserHandle;
-import static com.aicp.setupwizard.Manifest.permission.FINISH_SETUP;
 
 public class FinishActivity extends BaseSetupWizardActivity {
 
@@ -60,7 +60,6 @@ public class FinishActivity extends BaseSetupWizardActivity {
     private final Handler mHandler = new Handler();
 
     private volatile boolean mIsFinishing = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,10 +157,12 @@ public class FinishActivity extends BaseSetupWizardActivity {
             }
 
             @Override
-            public void onAnimationCancel(Animator animation) {}
+            public void onAnimationCancel(Animator animation) {
+            }
 
             @Override
-            public void onAnimationRepeat(Animator animation) {}
+            public void onAnimationRepeat(Animator animation) {
+            }
         });
         anim.start();
     }

@@ -16,7 +16,6 @@
 
 package com.aicp.setupwizard;
 
-
 import static com.aicp.setupwizard.SetupWizardApp.LOGV;
 
 import android.annotation.Nullable;

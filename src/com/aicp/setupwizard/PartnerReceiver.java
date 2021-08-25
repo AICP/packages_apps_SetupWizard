@@ -1,5 +1,3 @@
-package com.aicp.setupwizard;
-
 /*
  * Copyright (C) 2016 The CyanogenMod Project
  *
@@ -15,6 +13,8 @@ package com.aicp.setupwizard;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package com.aicp.setupwizard;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

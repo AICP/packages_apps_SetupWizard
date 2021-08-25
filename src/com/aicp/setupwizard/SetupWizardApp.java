@@ -17,7 +17,6 @@
 
 package com.aicp.setupwizard;
 
-
 import android.app.Application;
 import android.app.StatusBarManager;
 import android.os.Bundle;
@@ -31,14 +30,13 @@ import com.aicp.setupwizard.util.SetupWizardUtils;
 public class SetupWizardApp extends Application {
 
     public static final String TAG = SetupWizardApp.class.getSimpleName();
-    // Leave this off for release
-    public static final boolean DEBUG = false;
-    /* Verbose Logging */
+    // Verbose logging
     public static final boolean LOGV = Log.isLoggable(TAG, Log.VERBOSE);
 
     public static final String ACTION_ACCESSIBILITY_SETTINGS =
             "android.settings.ACCESSIBILITY_SETTINGS_FOR_SUW";
-    public static final String ACTION_SETUP_COMPLETE = "com.aicp.setupwizard.AICP_SETUP_COMPLETE";
+    public static final String ACTION_SETUP_COMPLETE =
+            "com.aicp.setupwizard.AICP_SETUP_COMPLETE";
     public static final String ACTION_FINISHED = "com.aicp.setupwizard.SETUP_FINISHED";
     public static final String ACTION_SETUP_WIFI = "android.net.wifi.PICK_WIFI_NETWORK";
     public static final String ACTION_SETUP_BIOMETRIC = "android.settings.BIOMETRIC_ENROLL";
@@ -61,8 +59,8 @@ public class SetupWizardApp extends Application {
     public static final String UPDATE_RECOVERY_PROP = "persist.vendor.recovery_update";
 
     public static final int REQUEST_CODE_SETUP_WIFI = 0;
-    public static final int REQUEST_CODE_SETUP_CAPTIVE_PORTAL= 4;
-    public static final int REQUEST_CODE_SETUP_BLUETOOTH= 5;
+    public static final int REQUEST_CODE_SETUP_CAPTIVE_PORTAL = 4;
+    public static final int REQUEST_CODE_SETUP_BLUETOOTH = 5;
     public static final int REQUEST_CODE_SETUP_BIOMETRIC = 7;
     public static final int REQUEST_CODE_SETUP_LOCKSCREEN = 9;
 //    public static final int REQUEST_CODE_RESTORE = 10;
@@ -78,7 +76,7 @@ public class SetupWizardApp extends Application {
     private final Bundle mSettingsBundle = new Bundle();
     private final Handler mHandler = new Handler();
 
-    private final Runnable mRadioTimeoutRunnable = () ->  mIsRadioReady = true;
+    private final Runnable mRadioTimeoutRunnable = () -> mIsRadioReady = true;
 
     @Override
     public void onCreate() {

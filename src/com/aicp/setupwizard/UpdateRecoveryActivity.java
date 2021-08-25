@@ -28,8 +28,8 @@ import android.view.View;
 import android.widget.CheckBox;
 
 import com.google.android.setupcompat.util.WizardManagerHelper;
-import com.aicp.setupwizard.util.SetupWizardUtils;
 
+import com.aicp.setupwizard.util.SetupWizardUtils;
 
 public class UpdateRecoveryActivity extends BaseSetupWizardActivity {
 
