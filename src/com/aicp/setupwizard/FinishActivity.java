@@ -47,6 +47,7 @@ import com.google.android.setupcompat.util.SystemBarHelper;
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
 import com.aicp.setupwizard.util.EnableAccessibilityController;
+import com.aicp.setupwizard.util.SetupWizardUtils;
 
 public class FinishActivity extends BaseSetupWizardActivity {
 
@@ -177,6 +178,7 @@ public class FinishActivity extends BaseSetupWizardActivity {
                 WallpaperManager.getInstance(mSetupWizardApp);
         wallpaperManager.forgetLoadedWallpaper();
         finishAllAppTasks();
+        SetupWizardUtils.enableStatusBar(this);
         Intent intent = WizardManagerHelper.getNextIntent(getIntent(),
                 Activity.RESULT_OK);
         startActivityForResult(intent, NEXT_REQUEST);
