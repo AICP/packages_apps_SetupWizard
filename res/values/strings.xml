@@ -110,4 +110,6 @@
 
     <!-- eSIM setup -->
     <string name="setup_euicc">Setup eSIM</string>
+    <string name="euicc_summary">You can also add an eSIM to your device.</string>
+
 </resources>
