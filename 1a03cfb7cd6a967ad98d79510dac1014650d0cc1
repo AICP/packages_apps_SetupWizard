@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "408c343c_129931e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416
+      },
+      "writtenOn": "2021-09-26T13:37:14Z",
+      "side": 1,
+      "message": "Upstream commit: https://review.lineageos.org/c/LineageOS/android_packages_apps_SetupWizard/+/305725",
+      "revId": "1a03cfb7cd6a967ad98d79510dac1014650d0cc1",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b"
+    }
+  ]
+}
