@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f3ddc4_05a1b9ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 133
+      },
+      "writtenOn": "2026-02-06T15:26:30Z",
+      "side": 1,
+      "message": "To be honest, I\u0027m not seeing the change 😀\n\nI\u0027ve previewed the vector drawable via https://vd.floo.app/ and it seems it looks the same as before. Haven\u0027t checked the previous version.\n\nSo ... go to go 😉",
+      "revId": "ccfd6d74ff7e35683729379b47de101ab8863ac8",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b"
+    }
+  ],
   "submitRequirementResults": []
 }
